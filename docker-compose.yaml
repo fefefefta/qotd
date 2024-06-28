@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  qotd_postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: qotd
+    volumes:
+      - qotd_postgres_data:/var/lib/postgresql/data
+      - ./db/tables.ddl:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+
+volumes:
+  qotd_postgres_data:
