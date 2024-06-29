@@ -27,8 +27,8 @@ async def get_or_create_user(
         response.set_cookie(
             key="current_user",
             value=current_user.model_dump_json(by_alias=True).replace(",", "|"),
-            domain="ff0a-2-132-211-9.ngrok-free.app",
-            secure=False,
+            domain="qotd-fefta.vercel.app",
+            secure=True,
             samesite="none",
         )
         return current_user

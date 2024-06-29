@@ -42,7 +42,7 @@ def get_app() -> FastAPI:
 
     application.add_middleware(
         CORSMiddleware,
-        allow_origins=["http://192.168.1.208:3000", "http://localhost:3000", "http://127.0.0.1:3000", "http://ff0a-2-132-211-9.ngrok-free.app"],
+        allow_origins=["https://qotd-fefta.vercel.app"],
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
