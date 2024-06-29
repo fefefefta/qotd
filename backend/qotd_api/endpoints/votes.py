@@ -33,6 +33,8 @@ async def upvote_comment(
         vote = await unvote_comment(session, user.id_, vote.comment_id)
     await session.commit()
 
+    vote = VoteOut(**vote._asdict())
+
     vote.is_new_user = user.is_new_user
     vote.username = user.username
     return vote
