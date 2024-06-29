@@ -27,9 +27,8 @@ async def get_or_create_user(
         response.set_cookie(
             key="current_user",
             value=current_user.model_dump_json(by_alias=True).replace(",", "|"),
-            domain=".onrender.com",
             secure=True,
-            samesite="none",
+            samesite="strict",
             httponly=False,
         )
         return current_user
