@@ -18,11 +18,11 @@ class DefaultSettings(BaseSettings):
     APP_HOST: str = environ.get("APP_HOST", "https://0.0.0.0")
     APP_PORT: int = int(environ.get("APP_PORT", 8000))
 
-    POSTGRES_DB: str = environ.get("POSTGRES_DB", "qotd")
-    POSTGRES_HOST: str = environ.get("POSTGRES_HOST", "localhost")
-    POSTGRES_USER: str = environ.get("POSTGRES_USER", "postgres")
+    POSTGRES_DB: str = environ.get("POSTGRES_DB", "qotd_feax")
+    POSTGRES_HOST: str = environ.get("POSTGRES_HOST", "dpg-cpvtogeehbks73e36rag-a")
+    POSTGRES_USER: str = environ.get("POSTGRES_USER", "qotd_user")
     POSTGRES_PORT: int = int(environ.get("POSTGRES_PORT", "5432")[-4:])
-    POSTGRES_PASSWORD: str = environ.get("POSTGRES_PASSWORD", "postgres")
+    POSTGRES_PASSWORD: str = environ.get("POSTGRES_PASSWORD", "8IhLlk7YdVUczquJntdZwybXBzDvROMK")
     DB_CONNECT_RETRY: int = environ.get("DB_CONNECT_RETRY", 20)
     DB_POOL_SIZE: int = environ.get("DB_POOL_SIZE", 15)
 
