@@ -28,7 +28,8 @@ async def get_or_create_user(
             key="current_user",
             value=current_user.model_dump_json(by_alias=True).replace(",", "|"),
             secure=True,
-            samesite="strict",
+            samesite="none",
+            domain="onrender.com",
             httponly=False,
         )
         return current_user
