@@ -73,8 +73,6 @@ export default {
   },
   methods: {
     async handleCommentSubmit(text) {
-      const currentUserExists = !!getCookie('current_user');
-
       try {
         const response = await axios.post('/comment/', {
           text: text,
@@ -87,8 +85,8 @@ export default {
         console.error('Error submitting comment:', error);
       }
 
-      if (!currentUserExists && getCookie('current_user')) {
-        eventBus.emit('newUserCreated', getCookie('current_user').username);
+      if (response.data.is_new_user) {
+        eventBus.emit('newUserCreated', response.data.username);
       }
     },
     sortByOldest() {

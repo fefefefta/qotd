@@ -64,7 +64,6 @@ export default {
     },
 
     async vote() {
-      const currentUserExists = !!getCookie('current_user')?.username;
 
       try {
         const response = await apiClient.post('/votes/', {
@@ -81,14 +80,12 @@ export default {
           this.comment.voted = false;
         };
 
-      if (!currentUserExists && getCookie('current_user')) {
-        eventBus.emit('newUserCreated', getCookie('current_user').username);
+      if (response.data.is_new_user) {
+        eventBus.emit('newUserCreated', response.data.username);
       }
     },
 
     async handleCommentSubmit(text) {
-      const currentUserExists = !!getCookie('current_user');
-
       try {
         const response = await apiClient.post('/comment/', {
           text: text,
@@ -104,8 +101,8 @@ export default {
         console.error('Error submitting comment:', error);
       }
 
-      if (!currentUserExists && getCookie('current_user')) {
-        eventBus.emit('newUserCreated', getCookie('current_user').username);
+      if (response.data.is_new_user) {
+        eventBus.emit('newUserCreated', response.data.username);
       }
     },
   }
