@@ -69,6 +69,9 @@ export default {
         const response = await apiClient.post('/votes/', {
           comment_id: this.comment.id
         });
+        if (response.data.is_new_user) {
+          eventBus.emit('newUserCreated', response.data.username);
+        }
       } catch (error) {
         console.error('Error submitting vote:', error);
       }
@@ -79,10 +82,6 @@ export default {
           this.comment.upvotes -= 1;
           this.comment.voted = false;
         };
-
-      if (response.data.is_new_user) {
-        eventBus.emit('newUserCreated', response.data.username);
-      }
     },
 
     async handleCommentSubmit(text) {
@@ -97,12 +96,11 @@ export default {
         this.comment.children.push(newComment);
         this.reply();
         console.log('Comment submitted successfully:', response.data);
+        if (response.data.is_new_user) {
+          eventBus.emit('newUserCreated', response.data.username);
+        }
       } catch (error) {
         console.error('Error submitting comment:', error);
-      }
-
-      if (response.data.is_new_user) {
-        eventBus.emit('newUserCreated', response.data.username);
       }
     },
   }

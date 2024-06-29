@@ -80,13 +80,12 @@ export default {
         });
         const newComment = response.data;
         this.commentsArray.push(newComment);
+        if (response.data.is_new_user) {
+          eventBus.emit('newUserCreated', response.data.username);
+        }
         console.log('Comment submitted successfully:', response.data);
       } catch (error) {
         console.error('Error submitting comment:', error);
-      }
-
-      if (response.data.is_new_user) {
-        eventBus.emit('newUserCreated', response.data.username);
       }
     },
     sortByOldest() {
