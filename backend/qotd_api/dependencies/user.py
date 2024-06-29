@@ -27,7 +27,7 @@ async def get_or_create_user(
         response.set_cookie(
             key="current_user",
             value=current_user.model_dump_json(by_alias=True).replace(",", "|"),
-            domain="qotd-fefta.vercel.app",
+            # domain="qotd-fefta.vercel.app",
             secure=True,
             samesite="none",
         )
