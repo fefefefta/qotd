@@ -42,7 +42,7 @@ def get_app() -> FastAPI:
 
     application.add_middleware(
         CORSMiddleware,
-        allow_origins=["https://qotd-fefta.vercel.app"],
+        allow_origins=["https://qotd-front.onrender.com"],
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
