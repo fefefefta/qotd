@@ -39,6 +39,8 @@ async def create(
 ) -> CommentOut:
     """Creates new comment."""
     new_comment_data = CommentIn(**comment.model_dump(by_alias=True))
-    return await _create_comment(session, user, new_comment_data)
+    new_comment = await _create_comment(session, user, new_comment_data)
+    new_comment.is_new_user = user.is_new_user
+    return new_comment
 
 

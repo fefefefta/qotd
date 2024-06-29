@@ -33,6 +33,7 @@ async def get_or_create_user(
             # domain="onrender.com",
             httponly=False,
         )
+        current_user.is_new_user = True
         return current_user
 
 

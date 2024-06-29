@@ -32,4 +32,7 @@ async def upvote_comment(
     else:
         vote = await unvote_comment(session, user.id_, vote.comment_id)
     await session.commit()
+
+    vote.is_new_user = user.is_new_user
+    vote.username = user.username
     return vote

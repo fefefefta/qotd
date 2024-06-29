@@ -18,3 +18,5 @@ class CommentOut(CommentIn):
     voted: bool
     pub_ts: int | datetime
     children: list['CommentOut'] | None = []
+
+    is_new_user: bool = False
